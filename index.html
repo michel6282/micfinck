@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Micfinck</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 8px;
+            background: #ddd;
+            margin: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="index1.html">Revue de presse</a>
+            <a href="index2.html">Rire</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Bienvenue sur Micfinck</h1>
+        
+        <h2>Recherche de ressources</h2>
+        <input type="text" id="search" placeholder="Rechercher..." onkeyup="filterResources()">
+        <ul id="resource-list">
+            <li class="resource-item"><a href="diag.pdf">Diagnostic financier</a></li>
+            <li class="resource-item"><a href="PARAM.ods">Simulation 1</a></li>
+            <li class="resource-item"><a href="simubfr.ods">Simulation 2</a></li>
+        </ul>
+        
+        <h2>Formulaire de Contact</h2>
+        <form name="contact" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="contact">
+            <p>
+                <label>Nom: <input type="text" name="name" required></label>
+            </p>
+            <p>
+                <label>Email: <input type="email" name="email" required></label>
+            </p>
+            <p>
+                <label>Message: <textarea name="message" required></textarea></label>
+            </p>
+            <p>
+                <button type="submit">Envoyer</button>
+            </p>
+        </form>
+    </div>
+    
+    <script>
+        function filterResources() {
+            let input = document.getElementById("search").value.toLowerCase();
+            let list = document.getElementById("resource-list");
+            let items = list.getElementsByTagName("li");
+            
+            for (let i = 0; i < items.length; i++) {
+                let text = items[i].innerText.toLowerCase();
+                items[i].style.display = text.includes(input) ? "block" : "none";
+            }
+        }
+    </script>
+    <footer>
+        &copy; 2025 Micfinck - Tous droits réservés
+    </footer>
+</body>
+</html>
